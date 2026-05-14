@@ -214,10 +214,10 @@ function App() {
     return (
       <div className="admin-shell">
         <header className="admin-header">
-          <img src={logo} alt="HM Logo" className="admin-logo" />
+          <img src={logo} alt="Herring Media Logo" className="admin-logo" />
           <div>
             <p className="eyebrow">Admin dashboard</p>
-            <h1>HerringM Video Portal</h1>
+            <h1>Herring Media Portal</h1>
           </div>
         </header>
         <section className="admin-card">
@@ -236,7 +236,7 @@ function App() {
   return (
     <div className="admin-shell">
       <header className="admin-header">
-        <img src={logo} alt="HM Logo" className="admin-logo" />
+        <img src={logo} alt="Herring Media Logo" className="admin-logo" />
         <div>
           <p className="eyebrow">Admin dashboard</p>
           <h1>Manage galleries</h1>

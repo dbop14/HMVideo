@@ -37,9 +37,9 @@ function HomePage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <img src={logo} alt="HM Logo" className="brand-logo" />
+        <img src={logo} alt="Herring Media Logo" className="brand-logo" />
         <div>
-          <p className="eyebrow">HerringM Wedding Video</p>
+          <p className="eyebrow">Herring Media</p>
           <h1>Private gallery access</h1>
           <p className="subtitle">Enter the secure token you received from your wedding filmmaker to open your gallery.</p>
         </div>
@@ -99,7 +99,7 @@ function GalleryPage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <img src={logo} alt="HM Logo" className="brand-logo" />
+        <img src={logo} alt="Herring Media Logo" className="brand-logo" />
         <div>
           <p className="eyebrow">Gallery</p>
           <h1>{gallery?.gallery?.title || 'Wedding gallery'}</h1>
@@ -174,7 +174,7 @@ function VideoPage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <img src={logo} alt="HM Logo" className="brand-logo" />
+        <img src={logo} alt="Herring Media Logo" className="brand-logo" />
         <div>
           <p className="eyebrow">Video</p>
           <h1>{selectedVideo?.title || 'Watch video'}</h1>

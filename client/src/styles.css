@@ -1,14 +1,14 @@
 :root {
-  color-scheme: dark;
-  color: #f5f2ee;
-  background: #121116;
+  color-scheme: light;
+  color: #111111;
+  background: #ffffff;
   font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --surface: rgba(24, 22, 28, 0.92);
-  --surface-strong: rgba(33, 31, 39, 0.98);
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #f5c846;
-  --accent-soft: rgba(245, 200, 70, 0.15);
-  --text-muted: #bdb8b0;
+  --surface: #ffffff;
+  --surface-strong: #f7f7f7;
+  --border: #e1e1e1;
+  --accent: #000000;
+  --accent-soft: rgba(0, 0, 0, 0.08);
+  --text-muted: #555555;
 }
 
 @font-face {
@@ -38,8 +38,8 @@ html, body, #root {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #2f2b35 0%, #11100f 45%);
-  color: #f5f2ee;
+  background: #ffffff;
+  color: #111111;
 }
 
 button, input, textarea, select {
@@ -98,11 +98,11 @@ h1 {
 }
 
 .card {
-  background: var(--surface);
+  background: var(--surface-strong);
   border: 1px solid var(--border);
-  border-radius: 28px;
+  border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
 .centered-card {
@@ -118,9 +118,9 @@ h1 {
 input[type='text'], input[type='search'], input, textarea {
   width: 100%;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
-  color: #f5f2ee;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: #111111;
   padding: 16px 18px;
 }
 
@@ -130,8 +130,8 @@ input:focus, textarea:focus {
 }
 
 button.button {
-  background: linear-gradient(135deg, #f5c846 0%, #e0ba44 100%);
-  color: #111;
+  background: #111111;
+  color: #ffffff;
   border-radius: 999px;
   padding: 14px 22px;
   font-weight: 700;
@@ -140,8 +140,8 @@ button.button {
 
 button.button.secondary {
   background: transparent;
-  color: #f5f2ee;
-  border: 1px solid rgba(245, 200, 70, 0.32);
+  color: #111111;
+  border: 1px solid #111111;
 }
 
 button.button:hover {
