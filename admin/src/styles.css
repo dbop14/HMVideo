@@ -1,0 +1,259 @@
+:root {
+  color-scheme: dark;
+  color: #f4f1ec;
+  background: #0d0c0f;
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --surface: rgba(24, 22, 28, 0.96);
+  --surface-strong: rgba(33, 31, 40, 1);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #f5c846;
+  --accent-soft: rgba(245, 200, 70, 0.16);
+  --text-muted: #bdb8b0;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #211d24 0%, #0d0c0f 45%);
+  color: #f4f1ec;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.admin-shell {
+  width: min(1300px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.admin-header {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: max-content 1fr auto;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.admin-logo {
+  width: 80px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.admin-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 1.8fr;
+}
+
+.admin-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+}
+
+.admin-form {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-form.small-form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+input, textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  color: #f4f1ec;
+  padding: 14px 16px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 14px 22px;
+  background: linear-gradient(135deg, #f5c846 0%, #e0b541 100%);
+  color: #111;
+  font-weight: 700;
+}
+
+.button.secondary {
+  background: transparent;
+  color: #f4f1ec;
+  border: 1px solid rgba(245, 200, 70, 0.3);
+}
+
+.button.small-button {
+  padding: 10px 16px;
+}
+
+.gallery-list {
+  display: grid;
+  gap: 12px;
+}
+
+.gallery-item {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 18px;
+  color: inherit;
+}
+
+.gallery-item.active {
+  border-color: rgba(245, 200, 70, 0.45);
+}
+
+.gallery-item small {
+  display: block;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gallery-summary {
+  display: grid;
+  gap: 10px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.video-list,
+.share-list {
+  display: grid;
+  gap: 14px;
+}
+
+.video-item,
+.share-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.token-box {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  background: rgba(255,255,255,0.06);
+  padding: 10px 14px;
+  border-radius: 14px;
+  color: #f4f1ec;
+}
+
+.meta {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  border-radius: 20px;
+  padding: 18px 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  max-width: min(420px, calc(100% - 48px));
+}
+
+.toast.success {
+  background: rgba(37, 44, 35, 0.94);
+  border: 1px solid rgba(117, 182, 81, 0.35);
+}
+
+.toast.error {
+  background: rgba(48, 28, 28, 0.95);
+  border: 1px solid rgba(255, 159, 159, 0.3);
+}
+
+.error {
+  color: #ff9fa8;
+}
+
+@media (max-width: 980px) {
+  .admin-header,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}

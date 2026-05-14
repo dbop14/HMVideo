@@ -1,0 +1,255 @@
+:root {
+  color-scheme: dark;
+  color: #f5f2ee;
+  background: #121116;
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --surface: rgba(24, 22, 28, 0.92);
+  --surface-strong: rgba(33, 31, 39, 0.98);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #f5c846;
+  --accent-soft: rgba(245, 200, 70, 0.15);
+  --text-muted: #bdb8b0;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src: url('./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #2f2b35 0%, #11100f 45%);
+  color: #f5f2ee;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page-shell {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+.page-header {
+  display: grid;
+  gap: 18px;
+  align-items: center;
+  grid-template-columns: max-content 1fr;
+  margin-bottom: 24px;
+}
+
+.brand-logo {
+  width: 80px;
+  min-width: 80px;
+  height: auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--accent);
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 12px 0 0;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+}
+
+.centered-card {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.token-form {
+  display: grid;
+  gap: 16px;
+}
+
+input[type='text'], input[type='search'], input, textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: #f5f2ee;
+  padding: 16px 18px;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid rgba(245, 200, 70, 0.25);
+  outline-offset: 2px;
+}
+
+button.button {
+  background: linear-gradient(135deg, #f5c846 0%, #e0ba44 100%);
+  color: #111;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+button.button.secondary {
+  background: transparent;
+  color: #f5f2ee;
+  border: 1px solid rgba(245, 200, 70, 0.32);
+}
+
+button.button:hover {
+  transform: translateY(-1px);
+}
+
+.helper-text {
+  margin-top: 16px;
+  color: var(--text-muted);
+}
+
+.error {
+  color: #ff9fa8;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.gallery-intro {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr minmax(220px, 360px);
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.gallery-intro .share-box {
+  display: grid;
+  gap: 12px;
+}
+
+.gallery-intro .share-box input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.video-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.video-card {
+  display: grid;
+  gap: 18px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.video-card img,
+.thumbnail-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: rgba(255,255,255,0.05);
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.video-info h3 {
+  margin: 0 0 10px;
+}
+
+.video-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.meta {
+  color: var(--text-muted);
+  margin: 12px 0 0;
+}
+
+.player {
+  width: 100%;
+  min-height: 320px;
+  border-radius: 24px;
+  background: #000;
+}
+
+.video-player {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.video-meta {
+  display: grid;
+  gap: 12px;
+}
+
+@media (max-width: 830px) {
+  .page-header,
+  .gallery-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

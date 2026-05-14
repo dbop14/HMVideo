@@ -1,0 +1,110 @@
+# Docker Compose configuration for HM Wedding Video Portal
+# Copy this to docker-compose.yml and fill in the environment variables from .env
+# Or use: cp docker-compose.example.yml docker-compose.yml
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ${MEDIA_ROOT:-./media}/hls:/var/hls:ro
+      - ${MEDIA_ROOT:-./media}/thumbnails:/var/thumbnails:ro
+    depends_on:
+      - api
+      - client
+      - admin
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_URL=/api
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_URL=/api
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://wedding:${POSTGRES_PASSWORD}@postgres:5432/wedding
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - UPLOAD_DIR=/data/uploads
+      - HLS_DIR=/data/hls
+      - THUMB_DIR=/data/thumbnails
+    volumes:
+      - ${MEDIA_ROOT:-./media}/uploads:/data/uploads
+      - ${MEDIA_ROOT:-./media}/hls:/data/hls
+      - ${MEDIA_ROOT:-./media}/thumbnails:/data/thumbnails
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - DATABASE_URL=postgres://wedding:${POSTGRES_PASSWORD}@postgres:5432/wedding
+      - UPLOAD_DIR=/data/uploads
+      - HLS_DIR=/data/hls
+      - THUMB_DIR=/data/thumbnails
+    volumes:
+      - ${MEDIA_ROOT:-./media}/uploads:/data/uploads
+      - ${MEDIA_ROOT:-./media}/hls:/data/hls
+      - ${MEDIA_ROOT:-./media}/thumbnails:/data/thumbnails
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=wedding
+      - POSTGRES_USER=wedding
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wedding"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - wedding-network
+
+volumes:
+  postgres_data:
+
+networks:
+  wedding-network:
+    driver: bridge

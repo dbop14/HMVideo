@@ -1,0 +1,33 @@
+# Environment and secrets
+.env
+docker-compose.yml
+.env.local
+*.pem
+*.key
+github-recovery-codes.txt
+
+# Build artifacts
+node_modules/
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+media/
+postgres_data/
+
+# Media storage (if hosted locally)
+uploads/
+hls/
+thumbnails/
