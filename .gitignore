@@ -1,6 +1,5 @@
 # Environment and secrets
 .env
-docker-compose.yml
 .env.local
 *.pem
 *.key
