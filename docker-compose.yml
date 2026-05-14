@@ -1,12 +1,12 @@
 services:
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
     ports:
       - "8080:80"
       - "8443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/certs:/etc/nginx/certs:ro
       - ${MEDIA_ROOT:-./media}/hls:/var/hls:ro
       - ${MEDIA_ROOT:-./media}/thumbnails:/var/thumbnails:ro
     depends_on:
