@@ -104,35 +104,3 @@ volumes:
 networks:
   wedding-network:
     driver: bridge
-    environment:
-      - DATABASE_URL=postgres://wedding:IjiE3Is^&X@postgres:5432/wedding
-      - UPLOAD_DIR=/data/uploads
-      - HLS_DIR=/data/hls
-      - THUMB_DIR=/data/thumbnails
-    volumes:
-      - /DATA/Synology/docker/hmvideo/media/uploads:/data/uploads
-      - /DATA/Synology/docker/hmvideo/media/hls:/data/hls
-      - /DATA/Synology/docker/hmvideo/media/thumbnails:/data/thumbnails
-    depends_on:
-      postgres:
-        condition: service_healthy
-    restart: unless-stopped
-
-  postgres:
-    image: postgres:16-alpine
-    environment:
-      - POSTGRES_DB=wedding
-      - POSTGRES_USER=wedding
-      - POSTGRES_PASSWORD=IjiE3Is^&X
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U wedding"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-    restart: unless-stopped
-
-volumes:
-  postgres_data:
